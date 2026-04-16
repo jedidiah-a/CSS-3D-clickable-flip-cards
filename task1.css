@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #0b1220, #020617);
+  color: white;
+}
+
+.wrapper {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  width: 320px;
+  height: 420px;
+  perspective: 1400px;
+}
+
+.toggle {
+  display: none;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.9s cubic-bezier(0.4, 0.2, 0.2, 1);
+}
+
+.toggle:checked ~ .content {
+  transform: rotateY(180deg);
+}
+
+.front, .back {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  backface-visibility: hidden;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.front {
+  background-size: cover;
+  background-position: center;
+}
+
+.front::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0,0,0,0.35),
+    rgba(0,0,0,0.75)
+  );
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: 0.3rem;
+}
+
+p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+h3 {
+  margin-bottom: 1rem;
+}
+
+.tag {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.7rem;
+  background: rgba(255,255,255,0.15);
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.back {
+  background: #0b1220;
+  transform: rotateY(180deg);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+ul {
+  text-align: left;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  opacity: 0.9;
+  margin-top: 0.5rem;
+}
+
+.price {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #38bdf8;
+}
+
+.button {
+  margin-top: 1.2rem;
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  border: 1px solid white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.button:hover {
+  background: white;
+  color: black;
+}
+
+.return {
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+.return:hover {
+  background: #38bdf8;
+  color: black;
+}
+
+.card:hover .front {
+  transform: scale(1.02);
+  transition: 0.3s ease;
+}
+
+@media (max-width: 1000px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+}
